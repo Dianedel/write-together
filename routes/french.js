@@ -16,4 +16,19 @@ router.get("/liste-auteurs", (req, res, next) => {
     res.render("auteur-views/liste-auteurs");
   })
 
+// GET textes les plus populaires
+router.get("/textes-populaires", (req, res, next) => {
+    res.render("texte-views/populaires");
+})
+
+// GET textes récents
+router.get("/textes-recents", (req, res, next) => {
+    res.render("texte-views/recents");
+})
+
+// GET votes du moment
+router.get("/votes", (req, res, next) => {
+    res.render("texte-views/votes");
+})
+
 module.exports = router;
