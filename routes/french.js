@@ -31,4 +31,9 @@ router.get("/votes", (req, res, next) => {
     res.render("texte-views/votes");
 })
 
+// GET un texte
+router.get("/texte", (req, res, next) => {
+    res.render("texte-views/texte");
+})
+
 module.exports = router;
