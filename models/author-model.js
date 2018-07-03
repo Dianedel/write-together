@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema ({
+const authorSchema = new Schema ({
   lastName: { 
     type: String, 
     required: true },
@@ -18,32 +18,37 @@ const userSchema = new Schema ({
   },
   role: {
     type: String,
-    enum: [ "user", "admin"],
-    default: "user",
+    enum: ["author", "admin"],
+    default: "author",
     required: true
   },
    //only for users who signed up normally (enlever le required true pour un accès mixte)
-  encryptedPassword: { type: String },
+  encryptedPassword: { type: String }, //required: true },
    //only for users who logged in with Google
   googleID: { type: String },
   birthday: { type: Date },
   imageUrl: {
     type: String,
-    default: "/images/users/avatar.png"
+    default: "/images/authors/avatar.png"
   },
   description: {
     type: String, 
-    maxlength: 500
+    minlength: 20, 
+    maxlength: 500,
+    required: true
   }, 
 }, { 
     timestamps: true  
 });
 
-const User = mongoose.model("User", userSchema);
+const Author = mongoose.model("Author", authorSchema);
 
-userSchema.virtual("isAdmin").get(function () {
+authorSchema.virtual("isAdmin").get(function () {
   return this.role === "admin";
 });
 
+authorSchema.virtual("isAuthor").get(function () {
+  return this.role === "author";
+});
 
-module.exports = User;
+module.exports = Author;
