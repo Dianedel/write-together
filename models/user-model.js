@@ -2,23 +2,23 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema ({
-  lastName: { 
-    type: String, 
+  lastName: {
+    type: String,
     required: true },
-  firstName: { 
-    type: String, 
+  firstName: {
+    type: String,
     required: true },
-  pseudo: { type: 
+  pseudo: { type:
     String},
   email: {
-    type: String, 
+    type: String,
     required: true,
     unique: true,
     match: /^.+@.+\..+$/
   },
   role: {
     type: String,
-    enum: [ "contributeur", "auteur", "admin"],
+    enum: [ "contributeur", "author", "admin"],
     default: "contributeur",
     required: true
   },
@@ -33,12 +33,12 @@ const userSchema = new Schema ({
     default: "/images/users/user-avatar.png"
   },
   description: {
-    type: String, 
-    minlength: 20, 
+    type: String,
+    minlength: 20,
     maxlength: 500
-  }, 
-}, { 
-    timestamps: true  
+  },
+}, {
+    timestamps: true
 });
 
 const User = mongoose.model("User", userSchema);

@@ -6,15 +6,28 @@
     <a href="/fr"><button>Retour</button></a>
 </nav>
 
-<h1>Liste des Textes</h1>
+<h1>Liste des textes</h1>
+
+{{!-- <ul>
+  {{#each textArray}}
+  <li>
+    <h4><a href="{{this.text_id}}">{{this.title}}</a> - <a href="{{this.author_id}}">{{this.author}}</a></h4>
+  </li>
+  {{/each}}
+</ul> --}}
+
+
+
 
 
 <h2>📝</h2>
-<p>{{titre.texte}}<p>
+
 <p>Les fables de La Fontaine</p>
 <p>Comment finir son projet à temps</p>
-<p><a href="/fr/texte">Guide de survie en Bootcamp</a></p>
+<p><a href="/fr/text">Guide de survie en Bootcamp</a></p>
 
+
+{{!-- Boutons accès aux pages suivantes --}}
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
     <button type="button" class="btn btn-secondary">1</button>

@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
 
 // GET log in
 router.get("/login", (req, res, next) => {
-  res.render("auth-views/formulaire-in");
+  res.render("auth-views/log-in");
   })
 
   router.post("/process-login", (req, res, next) => {
@@ -49,7 +49,7 @@ router.get("/login", (req, res, next) => {
 
 // GET sign up
 router.get("/signup", (req, res, next) => {
-  res.render("auth-views/formulaire-up");
+  res.render("auth-views/sign-up");
 })
 
 router.post("/process-signup", (req, res, next) => {
@@ -89,8 +89,8 @@ router.get("/logout", (req, res, next) => {
 });
 
 // GET mon espace
-router.get("/mon-espace", (req, res, next) => {
-  res.render("auth-views/mon-espace");
+router.get("/my-space", (req, res, next) => {
+  res.render("auth-views/my-space");
 })
 
 

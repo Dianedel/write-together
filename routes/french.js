@@ -6,34 +6,34 @@ router.get("/", (req, res, next) => {
     res.render("home-page-fr");
   })
 
-// GET liste des textes
-router.get("/liste-textes", (req, res, next) => {
-    res.render("texte-views/liste-textes");
+// GET list des texts
+router.get("/texts-list", (req, res, next) => {
+    res.render("text-views/texts-list");
   })
 
-// GET liste des auteurs
-router.get("/liste-auteurs", (req, res, next) => {
-    res.render("auteur-views/liste-auteurs");
+// GET list des authors
+router.get("/authors-list", (req, res, next) => {
+    res.render("author-views/authors-list");
   })
 
-// GET textes les plus populaires
-router.get("/textes-populaires", (req, res, next) => {
-    res.render("texte-views/populaires");
+// GET texts les plus populaires
+router.get("/populares-texts", (req, res, next) => {
+    res.render("text-views/populares");
 })
 
-// GET textes récents
-router.get("/textes-recents", (req, res, next) => {
-    res.render("texte-views/recents");
+// GET texts récents
+router.get("/recents-texts", (req, res, next) => {
+    res.render("text-views/recents");
 })
 
 // GET votes du moment
 router.get("/votes", (req, res, next) => {
-    res.render("texte-views/votes");
+    res.render("text-views/votes");
 })
 
-// GET un texte
-router.get("/texte", (req, res, next) => {
-    res.render("texte-views/texte");
+// GET un text
+router.get("/text", (req, res, next) => {
+    res.render("text-views/text");
 })
 
 module.exports = router;

@@ -6,14 +6,25 @@
     <a href="/fr"><button>Retour</button></a>
 </nav>
 
-<h1>Liste des Auteur.e.s</h1>
+<h1>Liste des auteur.e.s</h1>
 
 <p>Balzac 📙</p>
 <p>Victor Hugo 📘</p>
 <p>Valérie Linarès 📔</p>
 <p>Simone Veil 📗</p>
 
+{{!-- <ul>
+  {{#each authorsArray}}
+  <li>
+    <h4>{if!{{this.firstName}}&&!{{this.lastName}} else {{this.pseudo}}}</h4>
+  </li>
+  {{/each}}
+</ul> --}}
 
+
+
+
+{{!-- Boutons accès aux pages suivantes --}}
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
     <button type="button" class="btn btn-secondary">1</button>
