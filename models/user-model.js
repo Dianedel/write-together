@@ -45,5 +45,11 @@ userSchema.virtual("isAdmin").get(function () {
   return this.role === "admin";
 });
 
+userSchema.virtual("displayName").get(function () {
+  if (!this.pseudo) {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  return this.pseudo;
+});
 
 module.exports = User;

@@ -51,4 +51,11 @@ authorSchema.virtual("isAuthor").get(function () {
   return this.role === "author";
 });
 
+authorSchema.virtual("displayName").get(function () {
+  if (!this.pseudo) {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  return this.pseudo;
+});
+
 module.exports = Author;
