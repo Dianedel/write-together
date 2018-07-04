@@ -19,9 +19,10 @@ const textSchema = new Schema ({
   requests: [
     {
       user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true 
+        type: String,
+        //type: Schema.Types.ObjectId,
+        //ref: "User",
+        //required: true 
       },
       comments: {
       type: String,
@@ -34,14 +35,17 @@ const textSchema = new Schema ({
   votes: [
     {
       user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true 
+      type: String,
+      //type: Schema.Types.ObjectId,
+      //ref: "User",
+      //required: true 
       },
-    type: Number,
-    min:0,
-    max: 5,
-    default: 0
+      note: {
+        type: Number,
+        min:0,
+        max: 5,
+        default: 0
+      }
     },
   ],
 }, { 
