@@ -8,8 +8,9 @@ const userSchema = new Schema ({
   firstName: { 
     type: String, 
     required: true },
-  pseudo: { type: 
-    String},
+  pseudo: {
+    type:String,
+    unique: true},
   email: {
     type: String, 
     required: true,

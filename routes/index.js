@@ -17,7 +17,7 @@ router.get("/login", (req, res, next) => {
   })
 
   router.post("/process-login", (req, res, next) => {
-    const { firstName, lastName, email, loginPassword } = req.body;
+    const { email, loginPassword } = req.body;
 
     // check the email by searching the database
     User.findOne({ email })
