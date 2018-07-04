@@ -42,7 +42,7 @@ router.get("/login", (req, res, next) => {
         // (behind the scenes, in calls the "passport.serialize()" function)
         req.login(userDoc, () => {
             // req.flash("success", "You successfully signed up");
-            res.redirect("/");
+            res.redirect("/fr");
         });
     })
     .catch((err) => {
@@ -75,7 +75,7 @@ router.post("/process-signup", (req, res, next) => {
   .then((userDoc) => {
       //
     //   req.flash("success", "....")
-      res.redirect("/");
+      res.redirect("/fr");
   })
   .catch((err) => {
       next(err);
@@ -90,7 +90,7 @@ router.get("/logout", (req, res, next) => {
 
   //"req.flash()" is defined by the "connect-flash" package
 //   req.flash("success", "Logged out successfully!");
-  res.redirect("/");
+  res.redirect("/fr");
 });
 
 // GET mon espace
