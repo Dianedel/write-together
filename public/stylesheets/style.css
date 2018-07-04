@@ -11,6 +11,10 @@ a {
   height: 100%;
   text-align: center; }
 
+.container {
+  padding-top: 2%;
+  padding-bottom: 2%; }
+
 .dropdown {
   margin-right: 220px;
   text-align: right; }
