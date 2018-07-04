@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const Author = require("../models/author-model");
+// const Text = require("../models/")
+
 
 // GET page d'accueil FRENCH
 router.get("/", (req, res, next) => {
@@ -13,8 +16,15 @@ router.get("/texts-list", (req, res, next) => {
 
 // GET list des authors
 router.get("/authors-list", (req, res, next) => {
-    res.render("author-views/authors-list");
-  })
+    Author.find()
+    .then((authorResults) => {
+        res.locals.authorArray = authorResults;
+        res.render("author-views/authors-list");
+    })
+    .catch((err) => {
+        next(err);
+    })
+  });
 
 // GET texts les plus populaires
 router.get("/populares-texts", (req, res, next) => {

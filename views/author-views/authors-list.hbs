@@ -8,18 +8,14 @@
 
 <h1>Liste des auteur.e.s</h1>
 
-<p>Balzac 📙</p>
-<p>Victor Hugo 📘</p>
-<p>Valérie Linarès 📔</p>
-<p>Simone Veil 📗</p>
 
-{{!-- <ul>
-  {{#each authorsArray}}
-  <li>
-    <h4>{if!{{this.firstName}}&&!{{this.lastName}} else {{this.pseudo}}}</h4>
-  </li>
+<ul>
+  {{#each authorArray}}
+    <li>
+      <p>{{this.displayName}}</p>
+    </li>
   {{/each}}
-</ul> --}}
+</ul>
 
 
 
