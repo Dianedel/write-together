@@ -1,6 +1,7 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #D4F0F6; }
 
 a {
   color: #00B7FF; }
@@ -8,6 +9,14 @@ a {
 .mainContainer {
   width: 100%;
   height: 100%;
+  text-align: center; }
+
+.dropdown {
+  margin-right: 220px;
+  text-align: right; }
+
+.buttonHP {
+  padding: 40px;
   text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
