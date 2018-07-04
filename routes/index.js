@@ -1,5 +1,10 @@
 const express = require('express');
 const router  = express.Router();
+const passport = require("passport");
+const bcrypt = require("bcrypt");
+const User = require("../models/user-model.js");
+const Author = require("../models/author-model.js");
+
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -12,14 +17,14 @@ router.get("/login", (req, res, next) => {
   })
 
   router.post("/process-login", (req, res, next) => {
-    const { email, loginPassword } = req.body;
+    const { firstName, lastName, email, loginPassword } = req.body;
 
     // check the email by searching the database
     User.findOne({ email })
     .then((userDoc) => {
         // "userDoc" will be falsy if we didn't find a user (wrong email)
         if (!userDoc) {
-            req.flash("error", "Incorrect email.");
+            // req.flash("error", "Incorrect email.");
             res.redirect("/login");
             return;  // return instead of else when there's a lot of code
         }
@@ -36,7 +41,7 @@ router.get("/login", (req, res, next) => {
         // "req.login()" is a Passport method for logging in a user
         // (behind the scenes, in calls the "passport.serialize()" function)
         req.login(userDoc, () => {
-            req.flash("success", "........");
+            // req.flash("success", "You successfully signed up");
             res.redirect("/");
         });
     })
@@ -53,12 +58,12 @@ router.get("/signup", (req, res, next) => {
 })
 
 router.post("/process-signup", (req, res, next) => {
-  const { fullName, email, originalPassword } = req.body;
+  const { firstName, lastName, email, originalPassword } = req.body;
 
   // Password can't be blank and requires a number
   if (originalPassword === "" || originalPassword.match(/[0-9]/) === null) {
       //
-      req.flash("", "")
+    //   req.flash("", "")
       res.redirect("/signup");
       return; // return instead of else when there's a lot of code
   }
@@ -66,10 +71,10 @@ router.post("/process-signup", (req, res, next) => {
   // we are ready to save the user if we get here
   const encryptedPassword = bcrypt.hashSync(originalPassword, 10);
 
-  User.create({ fullName, email, encryptedPassword })
+  User.create({ firstName, lastName, email, encryptedPassword })
   .then((userDoc) => {
       //
-      req.flash("success", "....")
+    //   req.flash("success", "....")
       res.redirect("/");
   })
   .catch((err) => {
@@ -84,7 +89,7 @@ router.get("/logout", (req, res, next) => {
   req.logout();
 
   //"req.flash()" is defined by the "connect-flash" package
-  req.flash("success", "Logged out successfully!");
+//   req.flash("success", "Logged out successfully!");
   res.redirect("/");
 });
 
