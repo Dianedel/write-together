@@ -2,16 +2,16 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const authorSchema = new Schema ({
-  lastName: { 
-    type: String, 
+  lastName: {
+    type: String,
     required: true },
-  firstName: { 
-    type: String, 
+  firstName: {
+    type: String,
     required: true },
-  pseudo: { type: 
+  pseudo: { type:
     String},
   email: {
-    type: String, 
+    type: String,
     required: true,
     unique: true,
     match: /^.+@.+\..+$/
@@ -32,16 +32,14 @@ const authorSchema = new Schema ({
     default: "/images/authors/avatar.png"
   },
   description: {
-    type: String, 
-    minlength: 20, 
+    type: String,
+    minlength: 20,
     maxlength: 500,
     required: true
-  }, 
-}, { 
-    timestamps: true  
+  },
+}, {
+    timestamps: true
 });
-
-const Author = mongoose.model("Author", authorSchema);
 
 authorSchema.virtual("isAdmin").get(function () {
   return this.role === "admin";
@@ -57,5 +55,7 @@ authorSchema.virtual("displayName").get(function () {
   }
   return this.pseudo;
 });
+
+const Author = mongoose.model("Author", authorSchema);
 
 module.exports = Author;
