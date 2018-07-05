@@ -61,7 +61,7 @@ router.get("/login/author", (req, res, next) => {
     res.render("auth-views/log-in-author");
     })
 
-router.post("/process-login", (req, res, next) => {
+router.post("/process-login-author", (req, res, next) => {
     const { email, loginPassword } = req.body;
 
     Author.findOne({ email })
@@ -168,24 +168,22 @@ router.get("/my-space/:ms", (req, res, next) => {
 });
 
 
-
-
 // GET poster un texte
 router.get("/text-post", (req, res, next) => {
     // 
-    if (!req.user || req.user.role !== "author" || requ.user.role !== "admin") {
-      //redirect away if you are not logged in
-      //req.flash
-      //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
-      res.redirect("login/author");
-      return;
-    }
+    // if (!req.user || req.user.role !== "author" || req.user.role !== "admin") {
+    //   //redirect away if you are not logged in
+    //   //req.flash
+    //   //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
+    //   res.redirect("login/author");
+    //   return;
+    // }
     res.render("author-views/text-post.hbs");
   });
   
   // POST poster un texte
   router.post("/process-text", (req, res, next) => {
-    if  (!req.user || req.user.role !== "author" || requ.user.role !== "admin") {
+    if  (!req.user || req.user.role !== "author" || req.user.role !== "admin") {
        //req.flash("error", "Il semble que vous ne soyez pas connecté en tant qu'auteur");
        //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
        res.redirect("login/author");
