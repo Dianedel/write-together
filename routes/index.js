@@ -203,6 +203,7 @@ router.get("/text-post", (req, res, next) => {
 });
 
 
+
 // GET poster une request // *****************************************************
 router.get("/fr/request", (req, res, next) => {
     
@@ -244,7 +245,7 @@ Texte.findByIdAndUpdate(
     next(err);
   })
 });
-  
+
 
 
 
