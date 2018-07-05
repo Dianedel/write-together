@@ -7,7 +7,7 @@ const Author = require("../models/author-model.js");
 mongoose.Promise = Promise;
 
 mongoose
-  .connect('mongodb://localhost/write-together', {useMongoClient : true})
+  .connect(process.env.MONGODB_URI, {useMongoClient : true})
   .then(() => {
     console.log('Connected to MongoDB for texts!')
   }).catch(err => {

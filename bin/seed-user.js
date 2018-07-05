@@ -7,7 +7,7 @@ const User = require("../models/user-model.js");
 mongoose.Promise = Promise;
 
 mongoose 
-  .connect('mongodb://localhost/write-together', {useMongoClient : true})
+  .connect(process.env.MONGODB_URI, {useMongoClient : true})
   .then(() => {
     console.log('Connected to MongoDB for users!')
   }).catch(err => {
