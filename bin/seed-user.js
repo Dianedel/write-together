@@ -19,7 +19,6 @@ mongoose
 const inputUsers = [ {
   lastName:"Tartemolle",
   firstName:"Geneviève",
-  pseudo:"",
   email: "tartemolle@toto.com",
   role: "user",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -31,7 +30,6 @@ const inputUsers = [ {
 {
   lastName:"Tartempion",
   firstName:"Léon",
-  pseudo:"",
   email: "tartempion@toto.com",
   role: "user",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -43,7 +41,6 @@ const inputUsers = [ {
 {
   lastName:"Durance",
   firstName:"Jean",
-  pseudo:"",
   email: "durance@toto.com",
   role: "user",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -55,7 +52,6 @@ const inputUsers = [ {
 {
   lastName:"Aubois Dormant",
   firstName:"Abel",
-  pseudo:"",
   email: "aubois@toto.com",
   role: "user",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -67,7 +63,6 @@ const inputUsers = [ {
 {
   lastName:"Nicouette",
   firstName:"Sandra",
-  pseudo:"",
   email: "nicouette@toto.com",
   role: "user",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -79,7 +74,6 @@ const inputUsers = [ {
 {
   lastName:"Zarela",
   firstName:"Maud",
-  pseudo:"",
   email: "zarela@toto.com",
   role: "user",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -91,7 +85,6 @@ const inputUsers = [ {
 {
   lastName:"de Lassence",
   firstName:"Diane",
-  pseudo:"",
   email: "dianedel@toto.com",
   role: "admin",
   encryptedPassword: bcrypt.hashSync("9999", 10),

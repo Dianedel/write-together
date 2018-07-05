@@ -9,13 +9,25 @@ router.get("/", (req, res, next) => {
     res.render("home-page-fr");
   })
 
-// GET liste des textes
+// GET liste des textes et des listes des textes proposés pour le vote
 router.get("/texts-list", (req, res, next) => {
     Texte.find()
     .populate("author")
     .then((textResults) => {
         res.locals.texteArray = textResults;
         res.render("text-views/texts-list");
+    })
+    .catch((err) => {
+        next(err);
+    })
+  });
+
+  router.get("/votes", (req, res, next) => {
+    Texte.find()
+    .populate("author")
+    .then((textResults) => {
+        res.locals.texteArray = textResults;
+        res.render("text-views/votes.hbs");
     })
     .catch((err) => {
         next(err);

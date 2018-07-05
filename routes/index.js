@@ -24,8 +24,62 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
+// GET sign up USERS // *****************************************************
+router.get("/signup/user", (req, res, next) => {
+  res.render("auth-views/sign-up-user");
+})
 
-// GET log in USERS
+router.post("/process-signup", (req, res, next) => {
+  const { firstName, lastName, description, email, originalPassword } = req.body;
+
+  if (originalPassword === "" || originalPassword.match(/[0-9]/) === null) {
+    //   req.flash("", "")
+      res.redirect("/signup/user");
+      return; // return instead of else when there's a lot of code
+  }
+
+  const encryptedPassword = bcrypt.hashSync(originalPassword, 10);
+
+  User.create({ firstName, lastName,  description, email, encryptedPassword })
+  .then((userDoc) => {
+    //   req.flash("success", "....")
+        res.redirect("/fr");
+  })
+  .catch((err) => {
+      next(err);
+  });
+});
+
+// GET sign up AUTHORS // *****************************************************
+router.get("/signup/author", (req, res, next) => {
+    res.render("auth-views/sign-up-author");
+  })
+
+  router.post("/process-signup-author", (req, res, next) => {
+    const { firstName, lastName, description, email, originalPassword } = req.body;
+
+    // Password can't be blank and requires a number
+    if (originalPassword === "" || originalPassword.match(/[0-9]/) === null) {
+      //   req.flash("", "")
+        res.redirect("/signup/author");
+        return; // return instead of else when there's a lot of code
+    }
+
+    const encryptedPassword = bcrypt.hashSync(originalPassword, 10);
+
+    Author.create({ firstName, lastName, description, email, encryptedPassword })
+    .then((authorDoc) => {
+      //   req.flash("success", "....")
+      //res.send (authorDoc);
+        res.redirect("/fr");
+    })
+    .catch((err) => {
+        next(err);
+    });
+  });
+
+
+// GET log in USERS // *****************************************************
 router.get("/login/user", (req, res, next) => {
   res.render("auth-views/log-in-user");
   })
@@ -57,7 +111,7 @@ router.get("/login/user", (req, res, next) => {
     });
 });
 
-// GET log in AUTHORS
+// GET log in AUTHORS // *****************************************************
 router.get("/login/author", (req, res, next) => {
     res.render("auth-views/log-in-author");
     })
@@ -89,62 +143,7 @@ router.post("/process-login-author", (req, res, next) => {
   });
 
 
-
-// GET sign up USERS
-router.get("/signup/user", (req, res, next) => {
-  res.render("auth-views/sign-up-user");
-})
-
-router.post("/process-signup", (req, res, next) => {
-  const { firstName, lastName, description, email, originalPassword } = req.body;
-
-  if (originalPassword === "" || originalPassword.match(/[0-9]/) === null) {
-    //   req.flash("", "")
-      res.redirect("/signup/user");
-      return; // return instead of else when there's a lot of code
-  }
-
-  const encryptedPassword = bcrypt.hashSync(originalPassword, 10);
-
-  User.create({ firstName, lastName,  description, email, encryptedPassword })
-  .then((userDoc) => {
-    //   req.flash("success", "....")
-        res.redirect("/fr");
-  })
-  .catch((err) => {
-      next(err);
-  });
-});
-
-// GET sign up AUTHORS
-router.get("/signup/author", (req, res, next) => {
-    res.render("auth-views/sign-up-author");
-  })
-
-  router.post("/process-signup-author", (req, res, next) => {
-    const { firstName, lastName, description, email, originalPassword } = req.body;
-
-    // Password can't be blank and requires a number
-    if (originalPassword === "" || originalPassword.match(/[0-9]/) === null) {
-      //   req.flash("", "")
-        res.redirect("/signup/author");
-        return; // return instead of else when there's a lot of code
-    }
-
-    const encryptedPassword = bcrypt.hashSync(originalPassword, 10);
-
-    Author.create({ firstName, lastName, description, email, encryptedPassword })
-    .then((authorDoc) => {
-      //   req.flash("success", "....")
-      //res.send (authorDoc);
-        res.redirect("/fr");
-    })
-    .catch((err) => {
-        next(err);
-    });
-  });
-
-// log out
+// log out // *****************************************************
 router.get("/logout", (req, res, next) => {
   // "req.logout()" is a Passport method for logging OUT the user
   req.logout();
@@ -167,9 +166,13 @@ router.get("/my-space", (req, res, next) => {
 });
 
 
-// GET poster un texte
+// GET poster un texte // *****************************************************
 router.get("/text-post", (req, res, next) => {
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 43ad06d5bbc3369f9c5f9e6db1f74d19d2e81161
     if (!req.user || req.user.role !== "author") {
       //redirect away if you are not logged in
       //req.flash
@@ -189,8 +192,11 @@ router.get("/text-post", (req, res, next) => {
        return;
     }
 
+<<<<<<< HEAD
     console.log("le req user est" + req.user.id);
 
+=======
+>>>>>>> 43ad06d5bbc3369f9c5f9e6db1f74d19d2e81161
   const { title, content } = req.body;
 
   Texte.create( {author:req.user._id, title, content} )
@@ -206,9 +212,17 @@ router.get("/text-post", (req, res, next) => {
 });
 
 
+<<<<<<< HEAD
 // GET poster une review
 router.get("/text-post", (req, res, next) => {
 
+=======
+
+// GET poster une review // *****************************************************
+router.get("/text-post", (req, res, next) => {
+
+    
+>>>>>>> 43ad06d5bbc3369f9c5f9e6db1f74d19d2e81161
   if (!req.user || req.user.role !== "user") {
     //redirect away if you are not logged in
     //req.flash
@@ -243,8 +257,12 @@ router.get("/text-post", (req, res, next) => {
 //     next(err);
 //   })
 // });
+<<<<<<< HEAD
 
 
+=======
+  
+>>>>>>> 43ad06d5bbc3369f9c5f9e6db1f74d19d2e81161
 
 
 

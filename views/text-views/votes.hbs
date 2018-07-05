@@ -5,13 +5,24 @@
     <a href="/fr"><button>Retour</button></a>
 </nav>
 
-<h1>Votes</h1>
+<h1>Contribuer/voter</h1>
 
-<h2>texts proposés pour le vote</h2>
+<h2>textes proposés pour le vote</h2>
 
 <p>Les votes restent ouverts pendant 72h 🕓</p>
-<p>Votez pour votre text préféré et proposez votre suite à l'author.e sous forme de 💬</p>
+<p>Votez pour votre texte préféré et proposez votre suite à l'auteur.e sous forme de 💬</p>
 <p>Les suites seront écrites dans un délai de .... </p>
+
+
+<ul>
+  {{#each texteArray}}
+  <li>
+    <p><a href="/fr/text/{{this.id}}">{{this.title}}</a> - <a href="/fr/author/{{this.author._id}}">{{this.author.displayName}}</a></p>
+  </li>
+  {{/each}}
+</ul>
+
+
 
 {{!-- BOOTSTRAP --}}
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

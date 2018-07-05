@@ -6,7 +6,11 @@ const Author = require("../models/author-model.js");
 
 mongoose.Promise = Promise;
 
+<<<<<<< HEAD
 mongoose
+=======
+mongoose 
+>>>>>>> 43ad06d5bbc3369f9c5f9e6db1f74d19d2e81161
   .connect(process.env.MONGODB_URI, {useMongoClient : true})
   .then(() => {
     console.log('Connected to MongoDB!')
@@ -19,7 +23,6 @@ mongoose
 const inputAuthors = [ {
   lastName:"Vogel",
   firstName:"Dominique",
-  pseudo:"",
   email: "vogel@toto.com",
   role: "author",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -31,7 +34,6 @@ const inputAuthors = [ {
 {
   lastName:"Gaston",
   firstName:"Gaëla",
-  pseudo:"",
   email: "gaston@toto.com",
   role: "author",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -43,7 +45,6 @@ const inputAuthors = [ {
 {
   lastName:"Dao",
   firstName:"Géraldine",
-  pseudo:"",
   email: "dao@toto.com",
   role: "author",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -55,7 +56,6 @@ const inputAuthors = [ {
 {
   lastName:"Debeugny",
   firstName:"Laurence",
-  pseudo:"",
   email: "debeugny@toto.com",
   role: "author",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -79,7 +79,6 @@ const inputAuthors = [ {
 {
   lastName:"de Reyniès Arlot",
   firstName:"Marie-Jeanne",
-  pseudo:"",
   email: "dereynies@toto.com",
   role: "author",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -91,7 +90,6 @@ const inputAuthors = [ {
 {
   lastName:"Linarès",
   firstName:"Valérie Marie",
-  pseudo:"",
   email: "linares@toto.com",
   role: "admin",
   encryptedPassword: bcrypt.hashSync("9999", 10),
@@ -102,7 +100,6 @@ const inputAuthors = [ {
 },
 { lastName:"Hugo",
   firstName:"Victor",
-  pseudo:"",
   email: "hugo@toto.com",
   role: "author",
   encryptedPassword: bcrypt.hashSync("9999", 10),
