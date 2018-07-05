@@ -13,14 +13,14 @@ const router  = express.Router();
 router.get('/', (req, res, next) => {
     //console.log(req.session);
     //console.log(req.user);
-  
+
   if (req.user) {
     //console.log("Logged IN")
   }
-  else { 
+  else {
     //console.log("Logged OUT")
   }
-    
+
   res.render('index');
 });
 
@@ -125,7 +125,7 @@ router.post("/process-login-author", (req, res, next) => {
                 res.redirect("/login/author");
                 return;  // return instead of else when there's a lot of code
         }
-  
+
         const { encryptedPassword } = authorDoc;
             if (!bcrypt.compareSync(loginPassword, encryptedPassword) ) {
                 res.redirect("/login/author");
@@ -153,11 +153,9 @@ router.get("/logout", (req, res, next) => {
   res.redirect("/fr");
 });
 
-// GET mon espace // *****************************************************
-router.get("/my-space/:ms", (req, res, next) => {
-    const { ms } = req.params;
-
-    mySpace.findById(ms)
+// GET mon espace
+router.get("/my-space", (req, res, next) => {
+    mySpace.findById(req.user._id)
     .then((myspaceResults) => {
         res.locals.myspaceItem = myspaceResults;
         res.render("auth-views/my-space");
@@ -180,8 +178,8 @@ router.get("/text-post", (req, res, next) => {
     }
     res.render("author-views/text-post.hbs");
   });
-  
-  // POST poster un texte // *****************************************************
+
+  // POST poster un texte
   router.post("/process-text", (req, res, next) => {
     if  (!req.user || req.user.role !== "author") {
        //req.flash("error", "Il semble que vous ne soyez pas connecté en tant qu'auteur");
@@ -190,8 +188,6 @@ router.get("/text-post", (req, res, next) => {
        return;
     }
 
-    console.log("le req user est" + req.user.id);
-    
   const { title, content } = req.body;
 
   Texte.create( {author:req.user._id, title, content} )
@@ -207,8 +203,10 @@ router.get("/text-post", (req, res, next) => {
 });
 
 
+
 // GET poster une review // *****************************************************
-router.get("/request-post", (req, res, next) => {
+router.get("/text-post", (req, res, next) => {
+
     
   if (!req.user || req.user.role !== "user") {
     //redirect away if you are not logged in
@@ -244,7 +242,6 @@ router.get("/request-post", (req, res, next) => {
 //     next(err);
 //   })
 // });
-  
   
 
 

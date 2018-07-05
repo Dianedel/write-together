@@ -53,7 +53,11 @@ router.get("/author/:id", (req, res, next) => {
     Author.findById(id)
     .then((authorResults) => {
     res.locals.authorItem = authorResults;
-    res.render("author-views/author");
+    Texte.find({author:id})
+    .then((textResults) => {
+        res.locals.texteArray = textResults;
+        res.render("author-views/author");
+    })
     })
     .catch((err) => {
         next(err);
@@ -62,13 +66,32 @@ router.get("/author/:id", (req, res, next) => {
 
 // GET textes les plus populaires
 router.get("/populares-texts", (req, res, next) => {
-    res.render("text-views/populares");
-})
+    Texte.find()
+    .populate("author")
+    .then((textResults) => {
+        res.locals.texteArray = textResults;
+        res.render("text-views/populares");
+    })
+    .catch((err) => {
+        next(err);
+    })
+  });
+
+
 
 // GET textes récents
 router.get("/recents-texts", (req, res, next) => {
-    res.render("text-views/recents");
-})
+    Texte.find()
+    .populate("author")
+    .then((textResults) => {
+        res.locals.texteArray = textResults;
+        res.render("text-views/recents");
+    })
+    .catch((err) => {
+        next(err);
+    })
+  });
+
 
 // GET votes du moment
 router.get("/votes", (req, res, next) => {
@@ -78,11 +101,11 @@ router.get("/votes", (req, res, next) => {
 // GET un texte
 router.get("/text/:id", (req, res, next) => {
     const { id } = req.params;
-
     Texte.findById(id)
+    .populate("author")
     .then((textResults) => {
         res.locals.textItem = textResults;
-        res.render("text-views/text");
+            res.render("text-views/text");
     })
     .catch((err) => {
         next(err);
