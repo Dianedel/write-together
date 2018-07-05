@@ -1,11 +1,18 @@
+require('dotenv').config();
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const Author = require("../models/author-model.js");
 
 mongoose.Promise = Promise;
 
+<<<<<<< HEAD
 mongoose
   .connect('mongodb://localhost/write-together', {useMongoClient : true})
+=======
+mongoose 
+  .connect(process.env.MONGODB_URI, {useMongoClient : true})
+>>>>>>> 8b5f9e1c7b96c94e396db4205f0c38237980782b
   .then(() => {
     console.log('Connected to MongoDB!')
   }).catch(err => {
@@ -20,7 +27,7 @@ const inputAuthors = [ {
   pseudo:"",
   email: "vogel@toto.com",
   role: "author",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/authors/avatar.png",
@@ -32,7 +39,7 @@ const inputAuthors = [ {
   pseudo:"",
   email: "gaston@toto.com",
   role: "author",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/authors/Gaela_Gaston.jpg",
@@ -44,7 +51,7 @@ const inputAuthors = [ {
   pseudo:"",
   email: "dao@toto.com",
   role: "author",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/authors/Geraldine_Dao.jpg",
@@ -56,7 +63,7 @@ const inputAuthors = [ {
   pseudo:"",
   email: "debeugny@toto.com",
   role: "author",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/authors/Laurence_Debeugny.png",
@@ -68,7 +75,7 @@ const inputAuthors = [ {
   pseudo:"Marie-Claire",
   email: "hamonic@toto.com",
   role: "author",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/authors/Marie-Claire.jpg",
@@ -80,7 +87,7 @@ const inputAuthors = [ {
   pseudo:"",
   email: "dereynies@toto.com",
   role: "author",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/authors/Marie-Jeanne.png",
@@ -92,7 +99,7 @@ const inputAuthors = [ {
   pseudo:"",
   email: "linares@toto.com",
   role: "admin",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/authors/Valerie-Marie_Linares.png",
@@ -103,7 +110,7 @@ const inputAuthors = [ {
   pseudo:"",
   email: "hugo@toto.com",
   role: "author",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/authors/Victor_Hugo.jpg",

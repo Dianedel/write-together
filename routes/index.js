@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user-model.js");
 const Author = require("../models/author-model.js");
 const mySpace = require("../models/user-model.js");
+const Texte = require("../models/text-model")
 // laisser const router à la dernière place
 const router  = express.Router();
 
@@ -61,7 +62,7 @@ router.get("/login/author", (req, res, next) => {
     res.render("auth-views/log-in-author");
     })
 
-router.post("/process-login", (req, res, next) => {
+router.post("/process-login-author", (req, res, next) => {
     const { email, loginPassword } = req.body;
 
     Author.findOne({ email })
@@ -108,7 +109,7 @@ router.post("/process-signup", (req, res, next) => {
   User.create({ firstName, lastName,  description, email, encryptedPassword })
   .then((userDoc) => {
     //   req.flash("success", "....")
-      res.redirect("/fr");
+        res.redirect("/fr");
   })
   .catch((err) => {
       next(err);
@@ -166,12 +167,15 @@ router.get("/my-space", (req, res, next) => {
 });
 
 
-
-
 // GET poster un texte
 router.get("/text-post", (req, res, next) => {
+<<<<<<< HEAD
     //
     if (!req.user || req.user.role !== "author" || requ.user.role !== "admin") {
+=======
+    
+    if (!req.user || req.user.role !== "author") {
+>>>>>>> 8b5f9e1c7b96c94e396db4205f0c38237980782b
       //redirect away if you are not logged in
       //req.flash
       //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
@@ -183,19 +187,25 @@ router.get("/text-post", (req, res, next) => {
 
   // POST poster un texte
   router.post("/process-text", (req, res, next) => {
-    if  (!req.user || req.user.role !== "author" || requ.user.role !== "admin") {
+    if  (!req.user || req.user.role !== "author") {
        //req.flash("error", "Il semble que vous ne soyez pas connecté en tant qu'auteur");
        //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
        res.redirect("login/author");
-      return;
+       return;
     }
 
+<<<<<<< HEAD
+=======
+    console.log("le req user est" + req.user.id);
+    
+>>>>>>> 8b5f9e1c7b96c94e396db4205f0c38237980782b
   const { title, content } = req.body;
 
   Texte.create( {author:req.user._id, title, content} )
     .then ((texteDoc) => {
       //req.flash("success", "Votre texte a été enregistré avec succès");
       //alert("success", "Votre texte a été enregistré avec succès");
+      console.log("text created");
       res.redirect("/fr");
     })
     .catch((err) => {
@@ -204,7 +214,49 @@ router.get("/text-post", (req, res, next) => {
 });
 
 
+<<<<<<< HEAD
 
+=======
+// GET poster une review
+router.get("/text-post", (req, res, next) => {
+    
+  if (!req.user || req.user.role !== "user") {
+    //redirect away if you are not logged in
+    //req.flash
+    //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
+    res.redirect("login/user");
+    return;
+  }
+  res.render("auth-views/request-post.hbs");
+});
+
+// POST poster une request
+// router.post("/process-text", (req, res, next) => {
+//   if  (!req.user || req.user.role !== "author") {
+//      //req.flash("error", "Il semble que vous ne soyez pas connecté en tant qu'auteur");
+//      //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
+//      res.redirect("login/author");
+//      return;
+//   }
+
+//   console.log("le req user est" + req.user.id);
+  
+// const { title, content } = req.body;
+
+// Texte.create( {author:req.user._id, title, content} )
+//   .then ((texteDoc) => {
+//     //req.flash("success", "Votre texte a été enregistré avec succès");
+//     //alert("success", "Votre texte a été enregistré avec succès");
+//     console.log("text created");
+//     res.redirect("/fr");
+//   })
+//   .catch((err) => {
+//     next(err);
+//   })
+// });
+  
+  
+>>>>>>> 8b5f9e1c7b96c94e396db4205f0c38237980782b
 
 
 

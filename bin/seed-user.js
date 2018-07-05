@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/user-model.js");
@@ -5,7 +7,7 @@ const User = require("../models/user-model.js");
 mongoose.Promise = Promise;
 
 mongoose 
-  .connect('mongodb://localhost/write-together', {useMongoClient : true})
+  .connect(process.env.MONGODB_URI, {useMongoClient : true})
   .then(() => {
     console.log('Connected to MongoDB for users!')
   }).catch(err => {
@@ -20,7 +22,7 @@ const inputUsers = [ {
   pseudo:"",
   email: "tartemolle@toto.com",
   role: "user",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/users/user-avatar.png",
@@ -32,7 +34,7 @@ const inputUsers = [ {
   pseudo:"",
   email: "tartempion@toto.com",
   role: "user",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/users/user-avatar.png",
@@ -44,7 +46,7 @@ const inputUsers = [ {
   pseudo:"",
   email: "durance@toto.com",
   role: "user",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/users/user-avatar.png",
@@ -56,7 +58,7 @@ const inputUsers = [ {
   pseudo:"",
   email: "aubois@toto.com",
   role: "user",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/users/user-avatar.png",
@@ -68,7 +70,7 @@ const inputUsers = [ {
   pseudo:"",
   email: "nicouette@toto.com",
   role: "user",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/users/user-avatar.png",
@@ -80,7 +82,7 @@ const inputUsers = [ {
   pseudo:"",
   email: "zarela@toto.com",
   role: "user",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/users/user-avatar.png",
@@ -92,7 +94,7 @@ const inputUsers = [ {
   pseudo:"",
   email: "dianedel@toto.com",
   role: "admin",
-  encryptedPassword: bcrypt.hashSync("", 10),
+  encryptedPassword: bcrypt.hashSync("9999", 10),
   googleID: "",
   birthday: "",
   imageUrl: "/images/users/user-avatar.png",
