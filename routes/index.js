@@ -169,13 +169,8 @@ router.get("/my-space", (req, res, next) => {
 
 // GET poster un texte
 router.get("/text-post", (req, res, next) => {
-<<<<<<< HEAD
-    //
-    if (!req.user || req.user.role !== "author" || requ.user.role !== "admin") {
-=======
-    
+
     if (!req.user || req.user.role !== "author") {
->>>>>>> 8b5f9e1c7b96c94e396db4205f0c38237980782b
       //redirect away if you are not logged in
       //req.flash
       //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
@@ -194,11 +189,8 @@ router.get("/text-post", (req, res, next) => {
        return;
     }
 
-<<<<<<< HEAD
-=======
     console.log("le req user est" + req.user.id);
-    
->>>>>>> 8b5f9e1c7b96c94e396db4205f0c38237980782b
+
   const { title, content } = req.body;
 
   Texte.create( {author:req.user._id, title, content} )
@@ -214,12 +206,9 @@ router.get("/text-post", (req, res, next) => {
 });
 
 
-<<<<<<< HEAD
-
-=======
 // GET poster une review
 router.get("/text-post", (req, res, next) => {
-    
+
   if (!req.user || req.user.role !== "user") {
     //redirect away if you are not logged in
     //req.flash
@@ -240,7 +229,7 @@ router.get("/text-post", (req, res, next) => {
 //   }
 
 //   console.log("le req user est" + req.user.id);
-  
+
 // const { title, content } = req.body;
 
 // Texte.create( {author:req.user._id, title, content} )
@@ -254,9 +243,8 @@ router.get("/text-post", (req, res, next) => {
 //     next(err);
 //   })
 // });
-  
-  
->>>>>>> 8b5f9e1c7b96c94e396db4205f0c38237980782b
+
+
 
 
 
