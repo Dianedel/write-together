@@ -11,16 +11,11 @@
 <ul>
   {{#each texteArray}}
   <li>
-    <p><a href="/fr/text/{{this.id}}">{{this.title}}</a> - <a href="/fr/author/{{this.id}}">{{this.author}}</a></p>
+    <p><a href="/fr/text/{{this.id}}">{{this.title}}</a> - <a href="/fr/author/{{this.author._id}}">{{this.author.displayName}}</a></p>
   </li>
   {{/each}}
 </ul>
 
-
-
-{{!-- <p>Les fables de La Fontaine</p>
-<p>Comment finir son projet à temps</p> --}}
-{{!-- <p><a href="/fr/text">Guide de survie en Bootcamp</a></p> --}}
 
 
 {{!-- Boutons accès aux pages suivantes --}}
