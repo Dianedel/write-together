@@ -132,9 +132,10 @@ router.get("/signup/author", (req, res, next) => {
 
     const encryptedPassword = bcrypt.hashSync(originalPassword, 10);
 
-    Author.create({ firstName, lastName, description, email, encryptedPassword })
+    Author.create({ firstName, lastName, description, email, encryptedPassword, role })
     .then((authorDoc) => {
       //   req.flash("success", "....")
+      res.send (authorDoc);
         res.redirect("/fr");
     })
     .catch((err) => {
@@ -175,19 +176,19 @@ router.get("/text-post", (req, res, next) => {
     if (!req.user || req.user.role !== "author" || requ.user.role !== "admin") {
       //redirect away if you are not logged in
       //req.flash
-      alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
-      res.redirect("/login");
+      //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
+      res.redirect("login/author");
       return;
     }
-    res.render("text-post.hbs");
+    res.render("author-views/text-post.hbs");
   });
   
   // POST poster un texte
   router.post("/process-text", (req, res, next) => {
     if  (!req.user || req.user.role !== "author" || requ.user.role !== "admin") {
        //req.flash("error", "Il semble que vous ne soyez pas connecté en tant qu'auteur");
-       alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
-       res.redirect("/login");
+       //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
+       res.redirect("login/author");
       return;
     }
     
@@ -196,7 +197,7 @@ router.get("/text-post", (req, res, next) => {
   Texte.create( {author:req.user._id, title, content} )
     .then ((texteDoc) => {
       //req.flash("success", "Votre texte a été enregistré avec succès");
-      alert("success", "Votre texte a été enregistré avec succès");
+      //alert("success", "Votre texte a été enregistré avec succès");
       res.redirect("/fr");
     })
     .catch((err) => {
