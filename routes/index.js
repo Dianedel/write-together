@@ -1,15 +1,25 @@
 const express = require('express');
-const router  = express.Router();
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const User = require("../models/user-model.js");
 const Author = require("../models/author-model.js");
-
+const router  = express.Router();
 
 /* GET home page */
 router.get('/', (req, res, next) => {
+    //console.log(req.session);
+    //console.log(req.user);
+  
+  if (req.user) {
+    //console.log("Logged IN")
+  }
+  else { 
+    //console.log("Logged OUT")
+  }
+    
   res.render('index');
 });
+
 
 // GET log in USERS
 router.get("/login/user", (req, res, next) => {
@@ -19,27 +29,20 @@ router.get("/login/user", (req, res, next) => {
   router.post("/process-login", (req, res, next) => {
     const { email, loginPassword } = req.body;
 
-    // check the email by searching the database
     User.findOne({ email })
     .then((userDoc) => {
-        // "userDoc" will be falsy if we didn't find a user (wrong email)
-        if (!userDoc) {
+            if (!userDoc) {
             // req.flash("error", "Incorrect email.");
             res.redirect("/login");
             return;  // return instead of else when there's a lot of code
         }
-
-        //  we are ready to check the password if the email is okay
         const { encryptedPassword } = userDoc;
-        // "compareSync()" will return false if the password is wrong
+
         if (!bcrypt.compareSync(loginPassword, encryptedPassword) ){
             res.redirect("/login");
             return;
         }
 
-        // we are ready to LOG THEM IN if we get here (password was okay too)
-        // "req.login()" is a Passport method for logging in a user
-        // (behind the scenes, in calls the "passport.serialize()" function)
         req.login(userDoc, () => {
             // req.flash("success", "You successfully signed up");
             res.redirect("/fr");
@@ -55,33 +58,25 @@ router.get("/login/author", (req, res, next) => {
     res.render("auth-views/log-in-author");
     })
 
-    router.post("/process-login", (req, res, next) => {
-      const { email, loginPassword } = req.body;
+router.post("/process-login", (req, res, next) => {
+    const { email, loginPassword } = req.body;
 
-      // check the email by searching the database
-      Author.findOne({ email })
-      .then((authorDoc) => {
-          // "userDoc" will be falsy if we didn't find a user (wrong email)
-          if (!authorDoc) {
-              // req.flash("error", "Incorrect email.");
-              res.redirect("/login");
-              return;  // return instead of else when there's a lot of code
-          }
+    Author.findOne({ email })
+        .then((authorDoc) => {
+            if (!authorDoc) {
+                res.redirect("/login");
+                return;  // return instead of else when there's a lot of code
+        }
+  
+        const { encryptedPassword } = authorDoc;
+            if (!bcrypt.compareSync(loginPassword, encryptedPassword) ) {
+                res.redirect("/login");
+                return;
+            }
 
-          //  we are ready to check the password if the email is okay
-          const { encryptedPassword } = authorDoc;
-          // "compareSync()" will return false if the password is wrong
-          if (!bcrypt.compareSync(loginPassword, encryptedPassword) ){
-              res.redirect("/login");
-              return;
-          }
-
-          // we are ready to LOG THEM IN if we get here (password was okay too)
-          // "req.login()" is a Passport method for logging in a user
-          // (behind the scenes, in calls the "passport.serialize()" function)
-          req.login(authorDoc, () => {
+            req.login(authorDoc, () => {
               // req.flash("success", "You successfully signed up");
-              res.redirect("/fr");
+                res.redirect("/fr");
           });
       })
       .catch((err) => {
@@ -97,22 +92,18 @@ router.get("/signup/user", (req, res, next) => {
 })
 
 router.post("/process-signup", (req, res, next) => {
-  const { firstName, lastName, email, originalPassword } = req.body;
+  const { firstName, lastName, description, email, originalPassword } = req.body;
 
-  // Password can't be blank and requires a number
   if (originalPassword === "" || originalPassword.match(/[0-9]/) === null) {
-      //
     //   req.flash("", "")
       res.redirect("/signup");
       return; // return instead of else when there's a lot of code
   }
 
-  // we are ready to save the user if we get here
   const encryptedPassword = bcrypt.hashSync(originalPassword, 10);
 
-  User.create({ firstName, lastName, email, encryptedPassword })
+  User.create({ firstName, lastName,  description, email, encryptedPassword })
   .then((userDoc) => {
-      //
     //   req.flash("success", "....")
       res.redirect("/fr");
   })
@@ -131,18 +122,15 @@ router.get("/signup/author", (req, res, next) => {
 
     // Password can't be blank and requires a number
     if (originalPassword === "" || originalPassword.match(/[0-9]/) === null) {
-        //
       //   req.flash("", "")
         res.redirect("/signup");
         return; // return instead of else when there's a lot of code
     }
 
-    // we are ready to save the user if we get here
     const encryptedPassword = bcrypt.hashSync(originalPassword, 10);
 
     Author.create({ firstName, lastName, description, email, encryptedPassword })
     .then((authorDoc) => {
-        //
       //   req.flash("success", "....")
         res.redirect("/fr");
     })
@@ -165,6 +153,47 @@ router.get("/logout", (req, res, next) => {
 router.get("/my-space", (req, res, next) => {
   res.render("auth-views/my-space");
 })
+
+
+
+
+// GET poster un texte
+router.get("/text-post", (req, res, next) => {
+    // 
+    if (!req.user || req.user.role !== "author" || requ.user.role !== "admin") {
+      //redirect away if you are not logged in
+      //req.flash
+      alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
+      res.redirect("/login");
+      return;
+    }
+    res.render("text-post.hbs");
+  });
+  
+  // POST poster un texte
+  router.post("/process-text", (req, res, next) => {
+    if  (!req.user || req.user.role !== "author" || requ.user.role !== "admin") {
+       //req.flash("error", "Il semble que vous ne soyez pas connecté en tant qu'auteur");
+       alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
+       res.redirect("/login");
+      return;
+    }
+    
+  const { title, content } = req.body;
+
+  Texte.create( {author:req.user._id, title, content} )
+    .then ((texteDoc) => {
+      //req.flash("success", "Votre texte a été enregistré avec succès");
+      alert("success", "Votre texte a été enregistré avec succès");
+      res.redirect("/fr");
+    })
+    .catch((err) => {
+      next(err);
+    })
+});
+
+    
+  
 
 
 
