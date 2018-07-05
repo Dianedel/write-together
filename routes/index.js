@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user-model.js");
 const Author = require("../models/author-model.js");
 const mySpace = require("../models/user-model.js");
+const Texte = require("../models/text-model")
 // laisser const router à la dernière place
 const router  = express.Router();
 
@@ -108,7 +109,7 @@ router.post("/process-signup", (req, res, next) => {
   User.create({ firstName, lastName,  description, email, encryptedPassword })
   .then((userDoc) => {
     //   req.flash("success", "....")
-      res.redirect("/fr");
+        res.redirect("/fr");
   })
   .catch((err) => {
       next(err);
@@ -170,25 +171,27 @@ router.get("/my-space/:ms", (req, res, next) => {
 
 // GET poster un texte
 router.get("/text-post", (req, res, next) => {
-    // 
-    // if (!req.user || req.user.role !== "author" || req.user.role !== "admin") {
-    //   //redirect away if you are not logged in
-    //   //req.flash
-    //   //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
-    //   res.redirect("login/author");
-    //   return;
-    // }
+    
+    if (!req.user || req.user.role !== "author") {
+      //redirect away if you are not logged in
+      //req.flash
+      //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
+      res.redirect("login/author");
+      return;
+    }
     res.render("author-views/text-post.hbs");
   });
   
   // POST poster un texte
   router.post("/process-text", (req, res, next) => {
-    if  (!req.user || req.user.role !== "author" || req.user.role !== "admin") {
+    if  (!req.user || req.user.role !== "author") {
        //req.flash("error", "Il semble que vous ne soyez pas connecté en tant qu'auteur");
        //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
        res.redirect("login/author");
-      return;
+       return;
     }
+
+    console.log("le req user est" + req.user.id);
     
   const { title, content } = req.body;
 
@@ -196,6 +199,7 @@ router.get("/text-post", (req, res, next) => {
     .then ((texteDoc) => {
       //req.flash("success", "Votre texte a été enregistré avec succès");
       //alert("success", "Votre texte a été enregistré avec succès");
+      console.log("text created");
       res.redirect("/fr");
     })
     .catch((err) => {
