@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Author = require("../models/author-model.js");
-// const Text = require("../models/")
+const Texte = require("../models/text-model.js")
 
 
 // GET page d'accueil FRENCH
@@ -11,8 +11,15 @@ router.get("/", (req, res, next) => {
 
 // GET liste des textes
 router.get("/texts-list", (req, res, next) => {
-    res.render("text-views/texts-list");
-  })
+    Texte.find()
+    .then((textResults) => {
+        res.locals.texteArray = textResults;
+        res.render("text-views/texts-list");
+    })
+    .catch((err) => {
+        next(err);
+    })
+  });
 
 // GET liste des autheur.e.s
 router.get("/authors-list", (req, res, next) => {
@@ -56,8 +63,17 @@ router.get("/votes", (req, res, next) => {
 })
 
 // GET un texte
-router.get("/text", (req, res, next) => {
-    res.render("text-views/text");
-})
+router.get("/text/:id", (req, res, next) => {
+    const { id } = req.params;
+
+    Texte.findById(id)
+    .then((textResults) => {
+        res.locals.textItem = textResults;
+        res.render("text-views/text");
+    })
+    .catch((err) => {
+        next(err);
+    })
+});
 
 module.exports = router;

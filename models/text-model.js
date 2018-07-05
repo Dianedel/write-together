@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const textSchema = new Schema ({
-  title: { 
+const texteSchema = new Schema ({
+  title: {
     type: String,
     required: true
   },
@@ -14,15 +14,15 @@ const textSchema = new Schema ({
   author: {
     type: Schema.Types.ObjectId,
     ref: "Author",
-    required: true 
-  },    
+    required: true
+  },
   requests: [
     {
       user: {
         type: String,
         //type: Schema.Types.ObjectId,
         //ref: "User",
-        //required: true 
+        //required: true
       },
       comments: {
       type: String,
@@ -38,7 +38,7 @@ const textSchema = new Schema ({
       type: String,
       //type: Schema.Types.ObjectId,
       //ref: "User",
-      //required: true 
+      //required: true
       },
       note: {
         type: Number,
@@ -48,10 +48,10 @@ const textSchema = new Schema ({
       }
     },
   ],
-}, { 
-    timestamps: true  
+}, {
+    timestamps: true
 });
 
-const Text = mongoose.model("Text", textSchema);
+const Texte = mongoose.model("Texte", texteSchema);
 
-module.exports = Text;
+module.exports = Texte;
