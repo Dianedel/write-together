@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const mongoose = require("mongoose");
 const Texte = require("../models/text-model.js");
 const Author = require("../models/author-model.js");

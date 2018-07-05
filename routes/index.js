@@ -207,7 +207,45 @@ router.get("/text-post", (req, res, next) => {
     })
 });
 
+
+// GET poster une review
+router.get("/text-post", (req, res, next) => {
     
+  if (!req.user || req.user.role !== "user") {
+    //redirect away if you are not logged in
+    //req.flash
+    //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
+    res.redirect("login/user");
+    return;
+  }
+  res.render("auth-views/request-post.hbs");
+});
+
+// POST poster une request
+// router.post("/process-text", (req, res, next) => {
+//   if  (!req.user || req.user.role !== "author") {
+//      //req.flash("error", "Il semble que vous ne soyez pas connecté en tant qu'auteur");
+//      //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
+//      res.redirect("login/author");
+//      return;
+//   }
+
+//   console.log("le req user est" + req.user.id);
+  
+// const { title, content } = req.body;
+
+// Texte.create( {author:req.user._id, title, content} )
+//   .then ((texteDoc) => {
+//     //req.flash("success", "Votre texte a été enregistré avec succès");
+//     //alert("success", "Votre texte a été enregistré avec succès");
+//     console.log("text created");
+//     res.redirect("/fr");
+//   })
+//   .catch((err) => {
+//     next(err);
+//   })
+// });
+  
   
 
 
