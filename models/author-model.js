@@ -34,7 +34,7 @@ const authorSchema = new Schema ({
   },
   description: {
     type: String,
-    minlength: 20,
+    //minlength: 20,
     maxlength: 500,
     required: true
   },
