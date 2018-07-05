@@ -12,6 +12,7 @@ router.get("/", (req, res, next) => {
 // GET liste des textes
 router.get("/texts-list", (req, res, next) => {
     Texte.find()
+    .populate("author")
     .then((textResults) => {
         res.locals.texteArray = textResults;
         res.render("text-views/texts-list");
