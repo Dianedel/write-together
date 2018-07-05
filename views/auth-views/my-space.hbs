@@ -1,18 +1,43 @@
 
+{{!-- BOOTSTRAP --}}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+
 <nav>
-    <a href="/fr"><button>Retour</button></a>
+    <header>
+    <nav>
+<div class="dropdown">
+  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Menu
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <a href="/fr"><button class="dropdown-item" type="button">Page d'accueil</button></a>
+    <a href="/fr/authors-list"><button class="dropdown-item" type="button">Auteur.e.s</button></a>
+    <a href="/fr/texts-list"><button class="dropdown-item" type="button">Textes</button></a>
+    <a href="/my-space"><button class="dropdown-item" type="button">Mon espace</button></a>
+  </div>
+</div>
+
+    </nav>
+</header>
 </nav>
+
 
 <h1>Mon Espace</h1>
 
-<h2>👩</h2>
+<h2>👩 / 🧔</h2>
 
 <ul>
     <li>
-        <p>{{myspaceItem.firstName}}</p>
-        <p>{{myspaceItem.lastName}}</p>
-        <p>Pseudo : {{myspaceItem.pseudo}}</p>
-        <p>E-mail : {{myspaceItem.email}}</p>
-        <p>Description : {{myspaceItem.description}}</p>
+        <p><b>Prénom : </b>{{myspaceItem.firstName}}</p>
+        <p><b>Nom : </b>{{myspaceItem.lastName}}</p>
+        <p><b>Pseudo : </b>{{myspaceItem.pseudo}}</p>
+        <p><b>E-mail : </b>{{myspaceItem.email}}</p>
+        <p><b>Description : </b>{{myspaceItem.description}}</p>
     </li>
 </ul>
+
+{{!-- BOOTSTRAP --}}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

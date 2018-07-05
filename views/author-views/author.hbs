@@ -2,18 +2,40 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
 
-<nav>
-    <a href="/fr/authors-list"><button>Retour à la liste des auteur.e.s</button></a>
-</nav>
+<header>
+    <nav>
 
-<h1>Fiche d'un.e auteur.e</h1>
+<div class="dropdown">
+  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Menu
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <a href="/fr"><button class="dropdown-item" type="button">Page d'accueil</button></a>
+    <a href="/fr/authors-list"><button class="dropdown-item" type="button">Auteur.e.s</button></a>
+    <a href="/fr/texts-list"><button class="dropdown-item" type="button">Textes</button></a>
+    <a href="/my-space"><button class="dropdown-item" type="button">Mon espace</button></a>
+    <a href="/"><button class="dropdown-item" type="button">Changer de langue</button></a>
+  </div>
+</div>
+
+    </nav>
+</header>
+
+<h1>{{authorItem.displayName}}</h1>
 
 <ul>
     <li>
-        <img src={{"authorItem.pictureUrl"}} />
-        <p>{{authorItem.displayName}}</p>
-        <p>{{authorItem.description}}</p>
-        <p>{{authorItem.texts}}</p>
+
+        <p><h4>Description : </h4>{{authorItem.description}}</p>
+
+        <h4>Textes écrits par l'auteur.e</h4>
+
+        {{#each texteArray}}
+        <p> 📔 <a href="/fr/text/{{this.id}}">{{this.title}}</a></p>
+      {{/each}}
+
+        <img src="{{authorItem.imageUrl}}" />
+
     </li>
 </ul>
 

@@ -12,14 +12,14 @@ const router  = express.Router();
 router.get('/', (req, res, next) => {
     //console.log(req.session);
     //console.log(req.user);
-  
+
   if (req.user) {
     //console.log("Logged IN")
   }
-  else { 
+  else {
     //console.log("Logged OUT")
   }
-    
+
   res.render('index');
 });
 
@@ -70,7 +70,7 @@ router.post("/process-login", (req, res, next) => {
                 res.redirect("/login/author");
                 return;  // return instead of else when there's a lot of code
         }
-  
+
         const { encryptedPassword } = authorDoc;
             if (!bcrypt.compareSync(loginPassword, encryptedPassword) ) {
                 res.redirect("/login/author");
@@ -154,10 +154,8 @@ router.get("/logout", (req, res, next) => {
 });
 
 // GET mon espace
-router.get("/my-space/:ms", (req, res, next) => {
-    const { ms } = req.params;
-
-    mySpace.findById(ms)
+router.get("/my-space", (req, res, next) => {
+    mySpace.findById(req.user._id)
     .then((myspaceResults) => {
         res.locals.myspaceItem = myspaceResults;
         res.render("auth-views/my-space");
@@ -172,7 +170,7 @@ router.get("/my-space/:ms", (req, res, next) => {
 
 // GET poster un texte
 router.get("/text-post", (req, res, next) => {
-    // 
+    //
     if (!req.user || req.user.role !== "author" || requ.user.role !== "admin") {
       //redirect away if you are not logged in
       //req.flash
@@ -182,7 +180,7 @@ router.get("/text-post", (req, res, next) => {
     }
     res.render("author-views/text-post.hbs");
   });
-  
+
   // POST poster un texte
   router.post("/process-text", (req, res, next) => {
     if  (!req.user || req.user.role !== "author" || requ.user.role !== "admin") {
@@ -191,7 +189,7 @@ router.get("/text-post", (req, res, next) => {
        res.redirect("login/author");
       return;
     }
-    
+
   const { title, content } = req.body;
 
   Texte.create( {author:req.user._id, title, content} )
@@ -205,8 +203,8 @@ router.get("/text-post", (req, res, next) => {
     })
 });
 
-    
-  
+
+
 
 
 

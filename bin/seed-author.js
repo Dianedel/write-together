@@ -4,7 +4,7 @@ const Author = require("../models/author-model.js");
 
 mongoose.Promise = Promise;
 
-mongoose 
+mongoose
   .connect('mongodb://localhost/write-together', {useMongoClient : true})
   .then(() => {
     console.log('Connected to MongoDB!')
@@ -13,7 +13,7 @@ mongoose
   });
 
 
-// input données authors  
+// input données authors
 const inputAuthors = [ {
   lastName:"Vogel",
   firstName:"Dominique",
@@ -47,7 +47,7 @@ const inputAuthors = [ {
   encryptedPassword: bcrypt.hashSync("", 10),
   googleID: "",
   birthday: "",
-  imageUrl: "/images/authors/Gerladine_Dao.jpg",
+  imageUrl: "/images/authors/Geraldine_Dao.jpg",
   description: "Un style contemporain, sobre, élégant."
 },
 {
