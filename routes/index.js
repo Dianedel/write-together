@@ -168,7 +168,11 @@ router.get("/my-space", (req, res, next) => {
 
 // GET poster un texte // *****************************************************
 router.get("/text-post", (req, res, next) => {
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> b0687a364800566c3ce8f0f03dbd3c33e8e7e87d
     if (!req.user || req.user.role !== "author") {
       //redirect away if you are not logged in
       //req.flash
@@ -203,6 +207,7 @@ router.get("/text-post", (req, res, next) => {
 });
 
 
+<<<<<<< HEAD
 
 // GET poster une review // *****************************************************
 router.get("/text-post", (req, res, next) => {
@@ -210,15 +215,24 @@ router.get("/text-post", (req, res, next) => {
 
   if (!req.user || req.user.role !== "user") {
     //redirect away if you are not logged in
+=======
+
+// GET poster une request // *****************************************************
+router.get("/fr/request", (req, res, next) => {
+    
+  if (!req.user) {
+>>>>>>> b0687a364800566c3ce8f0f03dbd3c33e8e7e87d
     //req.flash
-    //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
-    res.redirect("login/user");
+    //alert("Espace inacessible! Il semble que vous ne soyez pas connecté");
+    res.redirect("/login/user");
     return;
   }
-  res.render("auth-views/request-post.hbs");
+  res.render("text-views/request.hbs");
 });
 
+
 // POST poster une request
+<<<<<<< HEAD
 // router.post("/process-text", (req, res, next) => {
 //   if  (!req.user || req.user.role !== "author") {
 //      //req.flash("error", "Il semble que vous ne soyez pas connecté en tant qu'auteur");
@@ -242,6 +256,36 @@ router.get("/text-post", (req, res, next) => {
 //     next(err);
 //   })
 // });
+=======
+router.post("/process-request", (req, res, next) => {
+  if  (!req.user) {
+     //req.flash("error", "Il semble que vous ne soyez pas connecté!");
+     res.redirect("/login/user");
+     return;
+  }
+  
+  const { request } = req.body;
+  let changes = { request }
+
+  console.log(Texte.findById());
+
+Texte.findByIdAndUpdate(
+  req.texte.id,
+    { $push: {request}},
+    { runValidators: true }
+)
+  .then ((texteDoc) => {
+    //req.flash("success", "Votre texte a été enregistré avec succès");
+    //alert("success", "Votre texte a été enregistré avec succès");
+    console.log("request saved");
+    res.redirect("/fr");
+  })
+  .catch((err) => {
+    next(err);
+  })
+});
+
+>>>>>>> b0687a364800566c3ce8f0f03dbd3c33e8e7e87d
 
 
 
