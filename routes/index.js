@@ -36,13 +36,13 @@ router.get("/login/user", (req, res, next) => {
     .then((userDoc) => {
             if (!userDoc) {
             // req.flash("error", "Incorrect email.");
-            res.redirect("/login");
+            res.redirect("/login/user");
             return;  // return instead of else when there's a lot of code
         }
         const { encryptedPassword } = userDoc;
 
         if (!bcrypt.compareSync(loginPassword, encryptedPassword) ){
-            res.redirect("/login");
+            res.redirect("/login/user");
             return;
         }
 
@@ -67,13 +67,13 @@ router.post("/process-login", (req, res, next) => {
     Author.findOne({ email })
         .then((authorDoc) => {
             if (!authorDoc) {
-                res.redirect("/login");
+                res.redirect("/login/author");
                 return;  // return instead of else when there's a lot of code
         }
   
         const { encryptedPassword } = authorDoc;
             if (!bcrypt.compareSync(loginPassword, encryptedPassword) ) {
-                res.redirect("/login");
+                res.redirect("/login/author");
                 return;
             }
 
@@ -99,7 +99,7 @@ router.post("/process-signup", (req, res, next) => {
 
   if (originalPassword === "" || originalPassword.match(/[0-9]/) === null) {
     //   req.flash("", "")
-      res.redirect("/signup");
+      res.redirect("/signup/user");
       return; // return instead of else when there's a lot of code
   }
 
@@ -120,22 +120,22 @@ router.get("/signup/author", (req, res, next) => {
     res.render("auth-views/sign-up-author");
   })
 
-  router.post("/process-signup", (req, res, next) => {
+  router.post("/process-signup-author", (req, res, next) => {
     const { firstName, lastName, description, email, originalPassword } = req.body;
 
     // Password can't be blank and requires a number
     if (originalPassword === "" || originalPassword.match(/[0-9]/) === null) {
       //   req.flash("", "")
-        res.redirect("/signup");
+        res.redirect("/signup/author");
         return; // return instead of else when there's a lot of code
     }
 
     const encryptedPassword = bcrypt.hashSync(originalPassword, 10);
 
-    Author.create({ firstName, lastName, description, email, encryptedPassword, role })
+    Author.create({ firstName, lastName, description, email, encryptedPassword })
     .then((authorDoc) => {
       //   req.flash("success", "....")
-      res.send (authorDoc);
+      //res.send (authorDoc);
         res.redirect("/fr");
     })
     .catch((err) => {
