@@ -15,7 +15,7 @@ passport.serializeUser((userDoc, done) => {
 // (happens automatically on every request AFTER you log in)
 passport.deserializeUser((idFromSession, done) => {
     //console.log("deSERIALIZE (user data from the database)")
-    
+
     User.findById(idFromSession)
     .then((userDoc) => {
         if (userDoc) {
@@ -23,7 +23,7 @@ passport.deserializeUser((idFromSession, done) => {
             done(null, userDoc);
             return;
         }
-        
+
         Author.findById(idFromSession)
             .then((authorDoc) => {
                 done(null, authorDoc);

@@ -10,6 +10,7 @@ const logger       = require('morgan');
 const path         = require('path');
 const session      = require("express-session")
 const MongoStore   = require("connect-mongo")(session);
+// const flash = require("connect-flash");
 const passportSetup = require("./passport/setup.js");
 
 
@@ -53,6 +54,8 @@ app.use(session({
   resave: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
+
+// app.use(flash());
 
 // this must come after session_setup
 passportSetup(app);

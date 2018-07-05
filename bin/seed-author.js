@@ -6,11 +6,7 @@ const Author = require("../models/author-model.js");
 
 mongoose.Promise = Promise;
 
-<<<<<<< HEAD
 mongoose
-=======
-mongoose 
->>>>>>> 43ad06d5bbc3369f9c5f9e6db1f74d19d2e81161
   .connect(process.env.MONGODB_URI, {useMongoClient : true})
   .then(() => {
     console.log('Connected to MongoDB!')

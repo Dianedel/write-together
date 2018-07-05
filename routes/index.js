@@ -42,7 +42,7 @@ router.post("/process-signup", (req, res, next) => {
 
   User.create({ firstName, lastName,  description, email, encryptedPassword })
   .then((userDoc) => {
-    //   req.flash("success", "....")
+      // req.flash("success", "Connecté.e")
         res.redirect("/fr");
   })
   .catch((err) => {
@@ -69,7 +69,7 @@ router.get("/signup/author", (req, res, next) => {
 
     Author.create({ firstName, lastName, description, email, encryptedPassword })
     .then((authorDoc) => {
-      //   req.flash("success", "....")
+        // req.flash("success", "Connecté")
       //res.send (authorDoc);
         res.redirect("/fr");
     })
@@ -90,7 +90,7 @@ router.get("/login/user", (req, res, next) => {
     User.findOne({ email })
     .then((userDoc) => {
             if (!userDoc) {
-            // req.flash("error", "Incorrect email.");
+            // req.flash("error", "E-mail incorrect!");
             res.redirect("/login/user");
             return;  // return instead of else when there's a lot of code
         }
@@ -102,7 +102,7 @@ router.get("/login/user", (req, res, next) => {
         }
 
         req.login(userDoc, () => {
-            // req.flash("success", "You successfully signed up");
+            // req.flash("success", "Connecté");
             res.redirect("/fr");
         });
     })
@@ -149,7 +149,7 @@ router.get("/logout", (req, res, next) => {
   req.logout();
 
   //"req.flash()" is defined by the "connect-flash" package
-//   req.flash("success", "Logged out successfully!");
+  // req.flash("success", "Logged out successfully!");
   res.redirect("/fr");
 });
 
@@ -168,11 +168,7 @@ router.get("/my-space", (req, res, next) => {
 
 // GET poster un texte // *****************************************************
 router.get("/text-post", (req, res, next) => {
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 43ad06d5bbc3369f9c5f9e6db1f74d19d2e81161
     if (!req.user || req.user.role !== "author") {
       //redirect away if you are not logged in
       //req.flash
@@ -186,22 +182,17 @@ router.get("/text-post", (req, res, next) => {
   // POST poster un texte
   router.post("/process-text", (req, res, next) => {
     if  (!req.user || req.user.role !== "author") {
-       //req.flash("error", "Il semble que vous ne soyez pas connecté en tant qu'auteur");
+      //  req.flash("error", "Il semble que vous ne soyez pas connecté en tant qu'auteur");
        //alert("Espace inacessible! Il semble que vous ne soyez pas connecté en tant qu'auteur");
        res.redirect("login/author");
        return;
     }
 
-<<<<<<< HEAD
-    console.log("le req user est" + req.user.id);
-
-=======
->>>>>>> 43ad06d5bbc3369f9c5f9e6db1f74d19d2e81161
   const { title, content } = req.body;
 
   Texte.create( {author:req.user._id, title, content} )
     .then ((texteDoc) => {
-      //req.flash("success", "Votre texte a été enregistré avec succès");
+      // req.flash("success", "Votre texte a été enregistré avec succès");
       //alert("success", "Votre texte a été enregistré avec succès");
       console.log("text created");
       res.redirect("/fr");
@@ -212,17 +203,11 @@ router.get("/text-post", (req, res, next) => {
 });
 
 
-<<<<<<< HEAD
-// GET poster une review
-router.get("/text-post", (req, res, next) => {
-
-=======
 
 // GET poster une review // *****************************************************
 router.get("/text-post", (req, res, next) => {
 
-    
->>>>>>> 43ad06d5bbc3369f9c5f9e6db1f74d19d2e81161
+
   if (!req.user || req.user.role !== "user") {
     //redirect away if you are not logged in
     //req.flash
@@ -257,12 +242,6 @@ router.get("/text-post", (req, res, next) => {
 //     next(err);
 //   })
 // });
-<<<<<<< HEAD
-
-
-=======
-  
->>>>>>> 43ad06d5bbc3369f9c5f9e6db1f74d19d2e81161
 
 
 
