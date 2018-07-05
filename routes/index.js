@@ -3,8 +3,9 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 const User = require("../models/user-model.js");
 const Author = require("../models/author-model.js");
-const router  = express.Router();
 const mySpace = require("../models/user-model.js");
+// laisser const router à la dernière place
+const router  = express.Router();
 
 
 /* GET home page */
