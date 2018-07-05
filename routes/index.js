@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user-model.js");
 const Author = require("../models/author-model.js");
 const router  = express.Router();
+const mySpace = require("../models/user-model.js");
+
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -150,9 +152,18 @@ router.get("/logout", (req, res, next) => {
 });
 
 // GET mon espace
-router.get("/my-space", (req, res, next) => {
-  res.render("auth-views/my-space");
-})
+router.get("/my-space/:ms", (req, res, next) => {
+    const { ms } = req.params;
+
+    mySpace.findById(ms)
+    .then((myspaceResults) => {
+        res.locals.myspaceItem = myspaceResults;
+        res.render("auth-views/my-space");
+    })
+    .catch((err) => {
+        next(err);
+    })
+});
 
 
 
