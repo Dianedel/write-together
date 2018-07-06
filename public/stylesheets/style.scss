@@ -1,11 +1,12 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: rgb(38, 175, 206);
+  font: 14px ;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(222, 245, 238);
 }
 
 a {
-  color: #00B7FF;
+  color: black;
 }
 
 .mainContainer {
@@ -40,6 +41,7 @@ a {
   background-color: burlywood;
 }
 
+<<<<<<< HEAD
 .container {
   display:flex;
 }
@@ -47,3 +49,36 @@ a {
 .author {
   flex-direction: row;
 }
+=======
+.tous {
+  padding: 20px;
+}
+
+.general {
+  padding: 20px;
+}
+
+.author {
+  padding: 20px;
+}
+
+.user {
+  padding: 20px;
+}
+
+.logout {
+  padding: 20px;
+}
+
+.titreTousTextes {
+  padding: 0 0 30px 0;
+  text-align: center;
+  // font-style: italic;
+  font-variant: small-caps;
+}
+
+.listeTousTextes {
+  list-style-type: none;
+  text-align: center;
+}
+>>>>>>> af5d6955a5faf8cc2424c05f05c060301cd68615

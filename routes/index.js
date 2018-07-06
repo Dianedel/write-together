@@ -21,6 +21,7 @@ router.get('/', (req, res, next) => {
     //console.log("Logged OUT")
   }
 
+  res.locals.layout = "layout-sans-boot.hbs";
   res.render('index');
 });
 

@@ -1,10 +1,11 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #26afce; }
+  font: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #def5ee; }
 
 a {
-  color: #00B7FF; }
+  color: black; }
 
 .mainContainer {
   width: 100%;
@@ -36,5 +37,28 @@ a {
 
 .author {
   flex-direction: row; }
+.tous {
+  padding: 20px; }
+
+.general {
+  padding: 20px; }
+
+.author {
+  padding: 20px; }
+
+.user {
+  padding: 20px; }
+
+.logout {
+  padding: 20px; }
+
+.titreTousTextes {
+  padding: 0 0 30px 0;
+  text-align: center;
+  font-variant: small-caps; }
+
+.listeTousTextes {
+  list-style-type: none;
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

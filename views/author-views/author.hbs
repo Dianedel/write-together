@@ -1,4 +1,5 @@
 
+
 <header>
     <nav>
 
@@ -18,12 +19,21 @@
     </nav>
 </header>
 
+<h1>{{authorItem.displayName}}</h1>
 
-<p><h1>{{textItem.title}}</h1> écrit par : <a href="/fr/author/{{textItem.author._id}}">{{textItem.author.displayName}}</a></p>
+<ul>
+    <li>
 
-<p>{{textItem.content}}</p>
+        <p><h4>Description : </h4>{{authorItem.description}}</p>
 
-<p>Notation : 📖 📖 📖 📖 📖</p>
+        <h4>Textes écrits par l'auteur.e</h4>
 
-<a href="/fr/request/{{textItem._id}}"> <button> Je vote pour ce texte </button> </a>
+        {{#each texteArray}}
+        <p> 📔 <a href="/fr/text/{{this.id}}">{{this.title}}</a></p>
+      {{/each}}
+
+        <img height="200px" src="{{authorItem.imageUrl}}" />
+
+    </li>
+</ul>
 
