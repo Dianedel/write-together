@@ -205,8 +205,7 @@ router.get("/text-post", (req, res, next) => {
 
 
 // GET poster une request // *****************************************************
-router.get("/fr/request", (req, res, next) => {
-    
+router.get("/fr/request/", (req, res, next) => {
   if (!req.user) {
     //req.flash
     //alert("Espace inacessible! Il semble que vous ne soyez pas connecté");
@@ -217,22 +216,22 @@ router.get("/fr/request", (req, res, next) => {
 });
 
 
-// POST poster une request
-router.post("/process-request", (req, res, next) => {
-  if  (!req.user) {
-     //req.flash("error", "Il semble que vous ne soyez pas connecté!");
-     res.redirect("/login/user");
-     return;
-  }
-  
-  const { request } = req.body;
-  let changes = { request }
 
-  console.log(Texte.findById());
+// POST poster une request
+router.post("/process-request/:texteId", (req, res, next) => {
+  if  (!req.user) {
+    //req.flash("error", "Il semble que vous ne soyez pas connecté!");
+    res.redirect("/login/user");
+    return;
+  }
+const { texteId } = req.params;
+const { comment } = req.body;
+
+console.log("text find by Id" + Texte.findById() )
 
 Texte.findByIdAndUpdate(
-  req.texte.id,
-    { $push: {request}},
+  texteId,
+    { $push: { comments }},
     { runValidators: true }
 )
   .then ((texteDoc) => {
