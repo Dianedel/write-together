@@ -10,11 +10,12 @@
 
 
 
-<form method="POST" action="/process-request/{{this.id}}">
+<form method="POST" action="/process-request/{{requestResult._id}}">
 <label>
     Pseudo :
     <input type="text" name="pseudo" placeholder="Votre pseudonyme">
 <br />
+</label>
 
 <label >
    <h3> Quel scénario voyez-vous pour ce texte ? </h3>
@@ -27,3 +28,4 @@
 
   <button> Sauvegarder votre vote </button>
 
+</form>

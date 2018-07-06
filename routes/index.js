@@ -206,15 +206,23 @@ router.get("/text-post", (req, res, next) => {
 
 
 // GET poster une request // *****************************************************
-router.get("/fr/request/", (req, res, next) => {
+router.get("/fr/request/:texteId", (req, res, next) => {
   if (!req.user) {
-    //req.flash
+
+        //req.flash
     //alert("Espace inacessible! Il semble que vous ne soyez pas connecté");
     res.redirect("/login/user");
     return;
   }
-  res.render("text-views/request.hbs");
-});
+  Texte.findById(req.params.texteId)
+    .then(requestResult => {
+      console.log(requestResult);
+      res.render("text-views/request.hbs", {requestResult});
+    })
+    .catch((err) => {
+      next(err);
+    })
+  });
 
 
 
@@ -226,14 +234,15 @@ router.post("/process-request/:texteId", (req, res, next) => {
     return;
   }
 const { texteId } = req.params;
-const { comment } = req.body;
+const { comments } = req.body;
 
 console.log("text find by Id" + Texte.findById() )
 
 Texte.findByIdAndUpdate(
   texteId,
-    { $push: { comments }},
+    { $push: { requests: { user: req.user, comments : comments } } },
     { runValidators: true }
+  
 )
   .then ((texteDoc) => {
     //req.flash("success", "Votre texte a été enregistré avec succès");

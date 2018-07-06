@@ -15,7 +15,7 @@ a {
   text-align: center;
 }
 
-.container {
+.languages {
   padding-top:2%;
   padding-bottom: 2%;
 }
@@ -34,6 +34,7 @@ a {
   background-color: burlywood;
 }
 
+<<<<<<< HEAD
 // boutons de la home page french
 .buttonHP {
   padding: 40px;
@@ -41,6 +42,15 @@ a {
   margin-bottom: 10px;
 }
 
+=======
+.container {
+  display:flex;
+}
+
+.author {
+  flex-direction: row;
+}
+>>>>>>> 1455f62b502a7f80bfa56d8b3147e7b75dcb6906
 .tous {
   padding: 20px;
 }
@@ -72,6 +82,7 @@ a {
 .listeTousTextes ul li {
   list-style-type: none;
   text-align: center;
+<<<<<<< HEAD
   margin: 30px;
 }
 
@@ -80,3 +91,6 @@ a {
   margin: 20px;
   border: 1px solid white;
 }
+=======
+}
+>>>>>>> 1455f62b502a7f80bfa56d8b3147e7b75dcb6906
