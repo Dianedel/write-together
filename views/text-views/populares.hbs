@@ -20,13 +20,17 @@
     </nav>
 </header>
 
-
+<div class="titreTousTextes">
 <h1>Textes les plus populaires</h1>
+</div>
 
+<div class="listeTousTextes">
 <ul>
   {{#each texteArray}}
   <li>
-    <p><a href="/fr/text/{{this.id}}">{{this.title}}</a> - <a href="/fr/author/{{this.author._id}}">{{this.author.displayName}}</a></p>
+    <p><a href="/fr/text/{{this.id}}">{{this.title}}</a> - <a href="/fr/author/{{this.author._id}}"><i>{{this.author.displayName}}</i></a></p>
   </li>
   {{/each}}
 </ul>
+
+</div>

@@ -18,9 +18,11 @@
 </header>
 </nav>
 
+<div class="titreTousTextes">
 <h1>Liste des auteur.e.s</h1>
+</div>
 
-
+<div class="listeTousTextes">
 <ul>
   {{#each authorArray}}
     <li>
@@ -28,12 +30,13 @@
     </li>
   {{/each}}
 </ul>
+</div>
 
 
 
 
 {{!-- Boutons accès aux pages suivantes --}}
-<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+{{!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
     <button type="button" class="btn btn-secondary">1</button>
     <button type="button" class="btn btn-secondary">2</button>
@@ -49,4 +52,4 @@
     <button type="button" class="btn btn-secondary">8</button>
   </div>
 </div>
-
+ --}}

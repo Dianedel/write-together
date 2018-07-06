@@ -3,20 +3,24 @@
     <a href="/fr"><button>Retour</button></a>
 </nav>
 
-<h1>Contribuer/voter</h1>
+<div class="titreTousTextes">
+<h1>Contribuer / voter</h1>
+</div>
 
-<h2>textes proposés pour le vote</h2>
+<div class="texteVote">
 
-<p>Les votes restent ouverts pendant 72h 🕓</p>
-<p>Votez pour votre texte préféré et proposez votre suite à l'auteur.e sous forme de 💬</p>
+<p>Les votes restent ouverts pendant 72h 🕓.
+Votez pour votre texte préféré et proposez votre suite à l'auteur.e sous forme de 💬.</p>
 <p>Les suites seront écrites dans un délai de .... </p>
+</div>
 
+<div class="listeTousTextes">
 
 <ul>
   {{#each texteArray}}
   <li>
-    <p><a href="/fr/text/{{this.id}}">{{this.title}}</a> - <a href="/fr/author/{{this.author._id}}">{{this.author.displayName}}</a></p>
+    <p><a href="/fr/text/{{this.id}}">{{this.title}}</a> - <a href="/fr/author/{{this.author._id}}"><i>{{this.author.displayName}}</i></a></p>
   </li>
   {{/each}}
 </ul>
-
+</div>

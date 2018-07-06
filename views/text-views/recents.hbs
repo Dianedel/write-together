@@ -19,13 +19,17 @@
     </nav>
 </header>
 
+<div class="titreTousTextes">
+<h1>📝 Textes écrits récemments 📝 </h1>
+</div>
 
-<h1>Textes écrits récemments 📝 </h1>
+<div class="listeTousTextes">
 
 <ul>
   {{#each texteArray}}
   <li>
-    <p><a href="/fr/text/{{this.id}}">{{this.title}}</a> - <a href="/fr/author/{{this.author._id}}">{{this.author.displayName}}</a></p>
+    <p><a href="/fr/text/{{this.id}}">{{this.title}}</a> - <a href="/fr/author/{{this.author._id}}"><i>{{this.author.displayName}}</i></a></p>
   </li>
   {{/each}}
 </ul>
+</div>

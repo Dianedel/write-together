@@ -20,17 +20,17 @@ a {
   margin-right: 220px;
   text-align: right; }
 
-.buttonHP {
-  padding: 40px;
-  text-align: center;
-  margin-bottom: 10px; }
-
 .text-post {
   display: block;
   text-align: top;
   width: 80%;
   height: 600px;
   background-color: burlywood; }
+
+.buttonHP {
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 10px; }
 
 .tous {
   padding: 20px; }
@@ -52,8 +52,14 @@ a {
   text-align: center;
   font-variant: small-caps; }
 
-.listeTousTextes {
+.listeTousTextes ul li {
   list-style-type: none;
-  text-align: center; }
+  text-align: center;
+  margin: 30px; }
+
+.texteVote {
+  text-align: center;
+  margin: 20px;
+  border: 1px solid white; }
 
 /*# sourceMappingURL=style.css.map */

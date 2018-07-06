@@ -25,13 +25,6 @@ a {
   text-align: right;
 }
 
-// boutons de la home page french
-.buttonHP {
-  padding: 40px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
 // format de l'endroit où l'auteur poste un texte
 .text-post {
   display: block;
@@ -39,6 +32,13 @@ a {
   width: 80%;
   height: 600px;
   background-color: burlywood;
+}
+
+// boutons de la home page french
+.buttonHP {
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .tous {
@@ -61,6 +61,7 @@ a {
   padding: 20px;
 }
 
+// Page Liste des textes, populaires, récents
 .titreTousTextes {
   padding: 0 0 30px 0;
   text-align: center;
@@ -68,7 +69,14 @@ a {
   font-variant: small-caps;
 }
 
-.listeTousTextes {
+.listeTousTextes ul li {
   list-style-type: none;
   text-align: center;
+  margin: 30px;
+}
+
+.texteVote {
+  text-align: center;
+  margin: 20px;
+  border: 1px solid white;
 }

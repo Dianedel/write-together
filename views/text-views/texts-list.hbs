@@ -19,14 +19,14 @@
 </nav>
 
 <div class="titreTousTextes">
-<h1>📝<i> Liste des textes </i>📝</h1>
+<h1>📝 Liste des textes 📝</h1>
 </div>
 
 <div class="listeTousTextes">
 <ul>
   {{#each texteArray}}
   <li>
-    <p><a href="/fr/text/{{this.id}}">{{this.title}}</a> - <a href="/fr/author/{{this.author._id}}">{{this.author.displayName}}</a></p>
+    <p><a href="/fr/text/{{this.id}}">{{this.title}}</a> - <a href="/fr/author/{{this.author._id}}"><i>{{this.author.displayName}}</i></a></p>
   </li>
   {{/each}}
 </ul>
@@ -35,7 +35,7 @@
 
 
 {{!-- Boutons accès aux pages suivantes --}}
-<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+{{!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
     <button type="button" class="btn btn-secondary">1</button>
     <button type="button" class="btn btn-secondary">2</button>
@@ -50,4 +50,4 @@
   <div class="btn-group" role="group" aria-label="Third group">
     <button type="button" class="btn btn-secondary">8</button>
   </div>
-</div>
+</div> --}}
