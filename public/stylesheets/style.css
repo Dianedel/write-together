@@ -12,7 +12,7 @@ a {
   height: 100%;
   text-align: center; }
 
-.container {
+.languages {
   padding-top: 2%;
   padding-bottom: 2%; }
 
@@ -37,6 +37,7 @@ a {
 
 .author {
   flex-direction: row; }
+
 .tous {
   padding: 20px; }
 
