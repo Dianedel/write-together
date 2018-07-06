@@ -168,7 +168,7 @@ router.get("/my-space", (req, res, next) => {
 
 // GET poster un texte // *****************************************************
 router.get("/text-post", (req, res, next) => {
-    
+
     if (!req.user || req.user.role !== "author") {
       //redirect away if you are not logged in
       //req.flash
@@ -206,7 +206,7 @@ router.get("/text-post", (req, res, next) => {
 
 // GET poster une request // *****************************************************
 router.get("/fr/request", (req, res, next) => {
-    
+
   if (!req.user) {
     //req.flash
     //alert("Espace inacessible! Il semble que vous ne soyez pas connecté");
@@ -224,7 +224,7 @@ router.post("/process-request", (req, res, next) => {
      res.redirect("/login/user");
      return;
   }
-  
+
   const { request } = req.body;
   let changes = { request }
 
