@@ -19,23 +19,30 @@
     </nav>
 </header>
 
+<div class="container">  
 
+  <div class="author-img"> 
 
-<h1>{{authorItem.displayName}}</h1>
+    <img height="200px" src="{{authorItem.imageUrl}}" />
+  </div>  
 
+  <div class="author-pres">  
+    <h1>{{authorItem.displayName}}</h1>
+
+    <p><h4>Description : </h4>{{authorItem.description}}</p>
+  </div>
+</div>
+<div class="container author-pres"> 
 <ul>
     <li>
-
-        <p><h4>Description : </h4>{{authorItem.description}}</p>
 
         <h4>Textes écrits par l'auteur.e</h4>
 
         {{#each texteArray}}
-        <p> 📔 <a href="/fr/text/{{this.id}}">{{this.title}}</a></p>
-      {{/each}}
-
-        <img height="200px" src="{{authorItem.imageUrl}}" />
-
+            <p> 📔 <a href="/fr/text/{{this.id}}">{{this.title}}</a></p>
+        {{/each}}
+ 
     </li>
 </ul>
+</div>
 

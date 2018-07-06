@@ -33,18 +33,27 @@ a {
   margin-bottom: 10px; }
 
 .container {
-  display: flex; }
+  display: flex;
+  justify-content: left; }
 
 .author {
-  flex-direction: row; }
+  flex-direction: row;
+  padding: 20px; }
+
+.author-img {
+  height: 210px;
+  width: 210px;
+  justify-content: left; }
+
+.author-pres {
+  padding-left: 10px;
+  justify-content: left;
+  margin-top: 20px; }
 
 .tous {
   padding: 20px; }
 
 .general {
-  padding: 20px; }
-
-.author {
   padding: 20px; }
 
 .user {
