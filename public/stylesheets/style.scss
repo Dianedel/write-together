@@ -40,4 +40,10 @@ a {
   background-color: burlywood;
 }
 
+.container {
+  display:flex;
+}
 
+.author {
+  flex-direction: row;
+}

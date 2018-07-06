@@ -31,4 +31,10 @@ a {
   height: 600px;
   background-color: burlywood; }
 
+.container {
+  display: flex; }
+
+.author {
+  flex-direction: row; }
+
 /*# sourceMappingURL=style.css.map */
